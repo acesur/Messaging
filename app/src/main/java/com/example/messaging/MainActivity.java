@@ -83,4 +83,12 @@ public class MainActivity extends Activity {
         SmsManager sms = SmsManager.getDefault();
         sms.sendTextMessage("5556",null,"Greetings!",sentPI,deliveredPI);
     }
+
+    @Override
+    public void onPause(){
+        super.onPause();
+        //---unregister the two BroadcastReceivers---
+        unregisterReceiver(smsSentReceiver);
+        unregisterReceiver(smsDeliveredReceiver);
+    }
 }
